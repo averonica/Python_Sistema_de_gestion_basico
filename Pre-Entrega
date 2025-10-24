@@ -38,7 +38,7 @@ while opcion != "5":
                 p=productos[i]    
                 print(f"{i+1}.   |   {p[0]}   |   {p[1]}   |   ${p[2]}  ")  
 
-    # Buscar producto (por coincidencia parcial en el nombre)
+    # Buscar producto
     elif opcion == "3":
         print("---- Buscar producto ----")
         nombre_buscar = input("Ingrese el nombre del producto: ").strip()
@@ -57,21 +57,22 @@ while opcion != "5":
         if len(productos) == 0:
            print("No hay productos para eliminar.")
         else:
-           i = 1
            for i in range(len(productos)):
              p=productos[i]
              print(f"{i+1}.   |   {p[0]}   |   {p[1]}   |   ${p[2]}  ")  # mostrar todos los productos cargados
         numero_buscar = input("Ingrese el numero del producto a eliminar: ").strip()
         if numero_buscar.isdigit():
-            numero_buscar = int(numero_buscar)
-            if numero_buscar >= 1 and numero_buscar <= len(numero_buscar):
-                while numero_buscar != p[numero_buscar]:
-                numero_buscar.remove(p)
-                print("Producto eliminado:", numero_buscar[0])
-            else:
-                print("Numero no valido.")
+            #numero_buscar = int(numero_buscar)
+          for i in range(len(productos)):
+                if numero_buscar in productos[i].lower():
+                 p=productos[i]
+                 p.remove(p)
+                 print("Producto eliminado:", numero_buscar[i])
+                else:
+                 print("No se encontró ningún producto con ese numero.")
         else:
-            print("Debe ingresar un numero valido.")
+          print("Debe ingresar un numero valido.")
+
     # Salir
     elif opcion == "5":
         print("Saliendo del sistema.")
